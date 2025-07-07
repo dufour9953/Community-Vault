@@ -29,7 +29,6 @@ SAMPLE_COMMUNITIES = [
 ]
 
 def load_communities() -> list:
-    """Return communities from the JSON file or a sample list."""
     if DATA_FILE.exists():
         try:
             with DATA_FILE.open("r", encoding="utf-8") as f:
@@ -42,10 +41,8 @@ def save_communities(data):
     with DATA_FILE.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-# --- Page Setup ---
 st.set_page_config(page_title="Digital Community Vault", page_icon="🌱", layout="wide")
 
-# Basic responsive tweaks
 st.markdown(
     """
     <style>
@@ -56,7 +53,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Tagline rotation
 TAGLINES = [
     "Your local farmers market, in your pocket",
     "Connecting regenerative communities worldwide",

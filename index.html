@@ -1,145 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Community Vault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #fffaf3;
-            --primary: #1f8a70;
-            --secondary: #d6755b;
-            --text: #333333;
-        }
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        header {
-            text-align: center;
-            padding: 4rem 0;
-        }
-        header h1 {
-            margin: 0 0 0.5rem;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        .btn {
-            background: var(--primary);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0.5rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s, background 0.2s;
-        }
-        .btn:hover {
-            background: #176b56;
-            transform: scale(1.05);
-        }
-        section {
-            padding: 3rem 0;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-        .feature-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        #app-preview {
-            height: 300px;
-            background: #eaeaea;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-        footer {
-            background: #eee;
-            text-align: center;
-            padding: 1rem;
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        @keyframes fadeUp {
-            to { opacity: 1; transform: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Community Vault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #1f8a70;
+      --red: #c75146;
+      --bg: #fffaf3;
+      --tan: #f4f0e4;
+      --text: #333;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      background: var(--green);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 25px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      background: #176b56;
+      transform: scale(1.05);
+    }
+
+    header.hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    header .hero-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    #app-preview {
+      flex: 1;
+      min-width: 250px;
+      background: #ddd;
+      border-radius: 12px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-weight: 600;
+    }
+
+    #features {
+      background: var(--tan);
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      padding: 3rem 2rem;
+    }
+
+    #features .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    #cta {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    #cta .btn {
+      background: var(--red);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      header.hero {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .nav-links {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
-<body>
-    <header class="fade-in">
-        <div class="container">
-            <h1>Digital Community Vault</h1>
-            <p>Connecting regenerative communities worldwide.</p>
-            <a href="#directory" class="btn">Explore Directory</a>
-            <a href="#submit" class="btn">Add Your Community</a>
-        </div>
-    </header>
-
-    <section id="features" class="fade-in">
-        <div class="container">
-            <h2>Why Join?</h2>
-            <div class="features">
-                <div>
-                    <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
-                    <h3>Share Abundance</h3>
-                    <p>Exchange goods, services and knowledge sustainably.</p>
-                </div>
-                <div>
-                    <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-                    <h3>Connect Globally</h3>
-                    <p>Find like-minded communities near and far.</p>
-                </div>
-                <div>
-                    <div class="feature-icon"><i class="fa-solid fa-seedling"></i></div>
-                    <h3>Grow Together</h3>
-                    <p>Support regenerative practices and holistic living.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="invitation" class="fade-in">
-        <div class="container">
-            <h2>Get Involved</h2>
-            <p>Ready to join the movement? Share your community with the network or discover new hubs today.</p>
-            <div id="app-preview"></div>
-        </div>
-    </section>
-
-    <footer class="fade-in">
-        <div class="container">
-            <p>&copy; 2025 Digital Community Vault</p>
-        </div>
-    </footer>
-
-    <script>
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeUp 0.8s forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
-</body>
-</html>
