@@ -4,40 +4,15 @@ from pathlib import Path
 
 DATA_FILE = Path("communities.json")
 
-
 def load_communities():
     if DATA_FILE.exists():
         with DATA_FILE.open("r", encoding="utf-8") as f:
             return json.load(f)
-    return [
-        {
-            "name": "Green Meadows Collective",
-            "location": "Oregon, USA",
-            "description": "A permaculture community cultivating organic produce and hosting learning events.",
-            "offers": ["Organic vegetables", "Permaculture workshops", "Farm stays"],
-            "needs": ["Seeds", "Volunteer builders", "Gardening tools"],
-        },
-        {
-            "name": "Sunrise Ecovillage",
-            "location": "New South Wales, Australia",
-            "description": "Off-grid community focused on renewable energy and holistic living.",
-            "offers": ["Solar power expertise", "Community gatherings"],
-            "needs": ["Permaculture experts", "Solar equipment"],
-        },
-        {
-            "name": "Riverstone Homestead",
-            "location": "British Columbia, Canada",
-            "description": "Family-run homestead sharing knowledge on natural building and herbal medicine.",
-            "offers": ["Herbal tinctures", "Natural building courses"],
-            "needs": ["Apprentices", "Building materials"],
-        },
-    ]
-
+    return []
 
 def save_communities(data):
     with DATA_FILE.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
-
 
 # --- Page Setup ---
 st.set_page_config(page_title="Digital Community Vault", page_icon="🌱")
@@ -57,9 +32,8 @@ tab = st.sidebar.radio(
     ("Home", "Community Directory", "Submit a Community", "About / Vision", "Dashboard"),
 )
 
-# Load community data
+# Load data
 communities = load_communities()
-
 
 # --- Home ---
 if tab == "Home":
@@ -67,23 +41,17 @@ if tab == "Home":
     tagline = TAGLINES[st.session_state.tagline_index % len(TAGLINES)]
     st.session_state.tagline_index += 1
     st.write(f"*{tagline}*")
-    st.write(
-        """\
+    st.write("""
 Welcome to the Digital Community Vault. This platform enables regenerative, land-based communities to share resources, skills, goods and services across a decentralized network.
 Use the directory to discover hubs around the world or submit your community to get involved.
-        """
-    )
+    """)
 
-# --- Community Directory ---
+# --- Directory ---
 elif tab == "Community Directory":
     st.header("Community Directory")
     query = st.text_input("Search by name or location")
     if query:
-        results = [
-            c
-            for c in communities
-            if query.lower() in c["name"].lower() or query.lower() in c["location"].lower()
-        ]
+        results = [c for c in communities if query.lower() in c["name"].lower() or query.lower() in c["location"].lower()]
     else:
         results = communities
 
@@ -127,13 +95,11 @@ elif tab == "Submit a Community":
 # --- About ---
 elif tab == "About / Vision":
     st.header("About the Digital Community Vault")
-    st.write(
-        """\
+    st.write("""
 The Digital Community Vault is a grassroots project inspired by the vision of a decentralized network of healing hubs. Like a mycelial web, we aim to connect communities that share ecological and spiritual values. Future iterations may include tokenized exchange, member profiles, and integrated DAO governance.
-        """
-    )
+    """)
 
-# --- Dashboard ---
+# --- Placeholder Dashboard ---
 else:
     st.header("Community Dashboard")
     st.write("This section will host future features such as user profiles and exchanges.")
