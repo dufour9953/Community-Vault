@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Green Meadows Collective",
+    "location": "Oregon, USA",
+    "description": "A permaculture community cultivating organic produce and hosting learning events.",
+    "offers": ["Organic vegetables", "Permaculture workshops", "Farm stays"],
+    "needs": ["Seeds", "Volunteer builders", "Gardening tools"]
+  },
+  {
+    "name": "Sunrise Ecovillage",
+    "location": "New South Wales, Australia",
+    "description": "Off-grid community focused on renewable energy and holistic living.",
+    "offers": ["Solar power expertise", "Community gatherings"],
+    "needs": ["Permaculture experts", "Solar equipment"]
+  },
+  {
+    "name": "Riverstone Homestead",
+    "location": "British Columbia, Canada",
+    "description": "Family-run homestead sharing knowledge on natural building and herbal medicine.",
+    "offers": ["Herbal tinctures", "Natural building courses"],
+    "needs": ["Apprentices", "Building materials"]
+  }
+]
