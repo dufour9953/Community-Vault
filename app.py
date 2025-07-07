@@ -1,18 +1,19 @@
+---
+
+### ✅ `app.py`
+
+```python
 import json
 from pathlib import Path
-
 import streamlit as st
 
 DATA_FILE = Path("communities.json")
 
-# Sample data returned if no JSON file is found
 SAMPLE_COMMUNITIES = [
     {
         "name": "Green Meadows Collective",
         "location": "Oregon, USA",
-        "description": (
-            "A permaculture community cultivating organic produce and hosting learning events."
-        ),
+        "description": "A permaculture community cultivating organic produce and hosting learning events.",
         "offers": ["Organic vegetables", "Permaculture workshops", "Farm stays"],
         "needs": ["Seeds", "Volunteer builders", "Gardening tools"],
     },
@@ -26,14 +27,11 @@ SAMPLE_COMMUNITIES = [
     {
         "name": "Riverstone Homestead",
         "location": "British Columbia, Canada",
-        "description": (
-            "Family-run homestead sharing knowledge on natural building and herbal medicine."
-        ),
+        "description": "Family-run homestead sharing knowledge on natural building and herbal medicine.",
         "offers": ["Herbal tinctures", "Natural building courses"],
         "needs": ["Apprentices", "Building materials"],
     },
 ]
-
 
 def load_communities() -> list:
     """Return communities from the JSON file or a sample list."""
@@ -45,27 +43,21 @@ def load_communities() -> list:
             pass
     return SAMPLE_COMMUNITIES.copy()
 
-
 def save_communities(data):
     with DATA_FILE.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-
 # --- Page Setup ---
-st.set_page_config(
-    page_title="Digital Community Vault",
-    page_icon="🌱",
-    layout="wide",
-)
+st.set_page_config(page_title="Digital Community Vault", page_icon="🌱", layout="wide")
 
 # Basic responsive tweaks
 st.markdown(
     """
-<style>
-.stTabs [data-baseweb="tab-list"] { flex-wrap: wrap; }
-ul { padding-left: 1.2rem; }
-</style>
-""",
+    <style>
+    .stTabs [data-baseweb="tab-list"] { flex-wrap: wrap; }
+    ul { padding-left: 1.2rem; }
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
@@ -81,9 +73,7 @@ if "tagline_index" not in st.session_state:
 tabs = st.tabs(["🏠 Home", "📖 Directory", "➕ Submit", "🌍 About"])
 home_tab, dir_tab, submit_tab, about_tab = tabs
 
-# Load community data
 communities = load_communities()
-
 
 with home_tab:
     st.title("Digital Community Vault")
@@ -96,38 +86,28 @@ Welcome to the Digital Community Vault. This platform enables regenerative, land
         """
     )
 
-# --- Community Directory ---
 with dir_tab:
     st.header("Community Directory")
     query = st.text_input("Search by name or location")
-    if query:
-        results = [
-            c
-            for c in communities
-            if query.lower() in c["name"].lower() or query.lower() in c["location"].lower()
-        ]
-    else:
-        results = communities
+    results = [
+        c for c in communities
+        if query.lower() in c["name"].lower() or query.lower() in c["location"].lower()
+    ] if query else communities
 
     for comm in results:
         card = f"""
-<div style='background-color:#ffffff;border-radius:8px;padding:1rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);'>
-  <h3 style='margin-bottom:0;'>{comm['name']}</h3>
-  <p style='color:#1f8a70;font-weight:600;margin:0;'>{comm['location']}</p>
-  <p>{comm['description']}</p>
-  <h4>🌿 What We Offer</h4>
-  <ul>
-    {''.join(f'<li>{o}</li>' for o in comm['offers'])}
-  </ul>
-  <h4>🙌 What We Seek</h4>
-  <ul>
-    {''.join(f'<li>{n}</li>' for n in comm['needs'])}
-  </ul>
-</div>
-"""
+        <div style='background-color:#ffffff;border-radius:8px;padding:1rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);'>
+            <h3 style='margin-bottom:0;'>{comm['name']}</h3>
+            <p style='color:#1f8a70;font-weight:600;margin:0;'>{comm['location']}</p>
+            <p>{comm['description']}</p>
+            <h4>🌿 What We Offer</h4>
+            <ul>{"".join(f"<li>{o}</li>" for o in comm["offers"])}</ul>
+            <h4>🙌 What We Seek</h4>
+            <ul>{"".join(f"<li>{n}</li>" for n in comm["needs"])}</ul>
+        </div>
+        """
         st.markdown(card, unsafe_allow_html=True)
 
-# --- Submit Form ---
 with submit_tab:
     st.header("Submit a New Community")
     with st.form("submit_form"):
@@ -150,7 +130,6 @@ with submit_tab:
         save_communities(communities)
         st.success("Community added!")
 
-# --- About ---
 with about_tab:
     st.header("About the Digital Community Vault")
     st.write(
