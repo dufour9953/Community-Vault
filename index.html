@@ -14,177 +14,167 @@
       --tan: #f4f0e4;
       --text: #333;
     }
-    *,*::before,*::after{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
+
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-    a{color:var(--green);text-decoration:none;}
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1rem 2rem;
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    .logo{
-      font-weight:700;
-      font-size:1.2rem;
-      display:flex;
-      align-items:center;
-      gap:0.5rem;
+
+    a {
+      color: var(--green);
+      text-decoration: none;
     }
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:1rem;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
     }
-    .btn{
-      background:var(--green);
-      color:#fff;
-      padding:0.5rem 1.25rem;
-      border-radius:25px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      transition:transform .2s, background .2s;
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .btn:hover{background:#176b56;transform:scale(1.05);}
-    header.hero{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:3rem 2rem;
-      max-width:960px;
-      margin:0 auto;
-      flex-wrap:wrap;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-    header .hero-text{flex:1;min-width:250px;}
-    #app-preview{
-      flex:1;
-      min-width:250px;
-      background:#ddd;
-      border-radius:12px;
-      height:300px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#777;
-      font-weight:600;
+
+    .btn {
+      background: var(--green);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 25px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background 0.2s;
     }
-    #features{
-      background:var(--tan);
-      border-top-left-radius:60px;
-      border-top-right-radius:60px;
-      padding:3rem 2rem;
+
+    .btn:hover {
+      background: #176b56;
+      transform: scale(1.05);
     }
-    #features .container{
-      max-width:960px;
-      margin:0 auto;
+
+    header.hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      flex-wrap: wrap;
     }
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:1.5rem;
-      margin-top:2rem;
+
+    header .hero-text {
+      flex: 1;
+      min-width: 250px;
     }
-    .card{
-      background:#fff;
-      border-radius:12px;
-      padding:1.5rem;
-      text-align:center;
-      box-shadow:0 1px 3px rgba(0,0,0,0.1);
-      transition:transform .2s;
+
+    #app-preview {
+      flex: 1;
+      min-width: 250px;
+      background: #ddd;
+      border-radius: 12px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-weight: 600;
     }
-    .card:hover{transform:translateY(-4px);}
-    .card-icon{
-      font-size:2rem;
-      color:var(--green);
-      margin-bottom:.5rem;
+
+    #features {
+      background: var(--tan);
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      padding: 3rem 2rem;
     }
-    #cta{
-      text-align:center;
-      padding:3rem 2rem;
+
+    #features .container {
+      max-width: 960px;
+      margin: 0 auto;
     }
-    #cta .btn{
-      background:var(--red);
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-    footer{
-      text-align:center;
-      padding:1rem;
-      background:#eee;
-      color:#555;
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
     }
-    @media(max-width:768px){
-      nav{flex-wrap:wrap;}
-      header.hero{flex-direction:column;gap:1.5rem;text-align:center;}
-      .nav-links{margin-top:.5rem;}
+
+    .card:hover {
+      transform: translateY(-4px);
     }
-    .fade-in{opacity:0;transform:translateY(20px);}
-    @keyframes fadeUp{to{opacity:1;transform:none;}}
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    #cta {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    #cta .btn {
+      background: var(--red);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      header.hero {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .nav-links {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
-<body>
-  <nav class="fade-in">
-    <div class="logo"><i class="fa-solid fa-seedling"></i> Digital Community Vault</div>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#" class="btn">Sign Up</a>
-    </div>
-  </nav>
-
-  <header class="hero fade-in">
-    <div class="hero-text">
-      <h1>Connect with regenerative communities</h1>
-      <p>Discover and share resources, skills, and services across a network of healing hubs.</p>
-      <a href="#features" class="btn">Get Started</a>
-    </div>
-    <div id="app-preview">App Screenshot</div>
-  </header>
-
-  <section id="features" class="fade-in">
-    <div class="container">
-      <h2 style="text-align:center;">Features</h2>
-      <div class="feature-grid">
-        <div class="card">
-          <div class="card-icon">📍</div>
-          <h3>Find Communities</h3>
-          <p>Search and connect with local hubs.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">❤️</div>
-          <h3>Share Resources</h3>
-          <p>Offer your skills and goods.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌱</div>
-          <h3>Grow the Network</h3>
-          <p>Invite others to join the movement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="cta" class="fade-in">
-    <h2>Join the Digital Community Vault today!</h2>
-    <p>Sign up to get started.</p>
-    <a href="#" class="btn">Sign Up</a>
-  </section>
-
-  <footer class="fade-in">
-    <p>© 2024 Digital Community Vault</p>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.animation='fadeUp .8s forwards';
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-  </script>
-</body>
-</html>
